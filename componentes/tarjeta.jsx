@@ -1,4 +1,4 @@
-import './Tarjeta.css';
+import './tarjeta.css';
 
 function Tarjeta({ elemento, alCambiarFavorito, alSeleccionar }) {
   return (
