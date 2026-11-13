@@ -1,34 +1,28 @@
-/* Archivo: src/components/Tarjeta.css */
+/* Archivo: src/components/tarjeta.css */
 .tarjeta-pelicula {
   background-color: transparent;
-  border-radius: 10px;
   color: #ffffff;
   display: flex;
   flex-direction: column;
-  /* Ancho fijo para que no se aplasten en el carrusel horizontal */
-  flex: 0 0 220px; 
+  flex: 0 0 240px; /* Ancho fijo para escritorio */
   scroll-snap-align: start;
-  transition: transform 0.3s ease;
-}
-
-.tarjeta-pelicula:hover {
-  transform: scale(1.05); /* Efecto de crecimiento al pasar el mouse */
 }
 
 .tarjeta-imagen-contenedor {
   cursor: pointer;
-  height: 330px;
-  border-radius: 10px;
+  height: 360px;
+  border-radius: 12px;
   overflow: hidden;
-  border: 3px solid transparent;
+  border: 2px solid transparent; 
   transition: all 0.3s ease;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  margin-bottom: 12px;
 }
 
-/* Borde blanco iluminado*/
+/* Efecto de borde blanco al pasar el cursor (hover) */
 .tarjeta-pelicula:hover .tarjeta-imagen-contenedor {
-  border-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+  border-color: #ffffff;
+  transform: translateY(-5px); /* Salto sutil hacia arriba */
 }
 
 .tarjeta-imagen {
@@ -38,7 +32,6 @@
 }
 
 .tarjeta-info {
-  padding: 12px 4px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -46,57 +39,74 @@
 
 .tarjeta-titulo {
   margin: 0;
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* Pone "..." si el título es muy largo */
+  text-overflow: ellipsis;
+  font-family: 'Inter', sans-serif;
 }
 
 .tarjeta-genero {
-  margin: 0;
-  color: #a0a0a0;
+  margin: 0 0 10px 0;
+  color: #a3a3a3;
   font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
 }
 
+/* Contenedor en fila para los botones de favoritos y detalles */
 .tarjeta-acciones {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 8px;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .boton-favorito, .boton-detalles {
-  padding: 8px;
-  border: none;
-  border-radius: 6px;
+  flex: 1; /* Ambos botones toman exactamente la mitad del espacio */
+  padding: 8px 0;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px; /* Forma de píldora */
+  color: #ffffff;
   cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: bold;
-  transition: background-color 0.2s, color 0.2s;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
 }
 
-.boton-favorito {
+.boton-favorito:hover, .boton-detalles:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
-.boton-favorito:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Estilo cuando ya está en favoritos */
+/* Estilo para cuando ya está en favoritos (Se rellena de blanco) */
 .boton-favorito.activo {
-  background-color: transparent;
-  border: 1px solid #ffffff;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #120f1d;
+  font-weight: 700;
+  border-color: #ffffff;
 }
 
-.boton-detalles {
-  background-color: transparent;
-  color: #a0a0a0;
-}
-
-.boton-detalles:hover {
-  color: #ffffff;
+/* --- RESPONSIVIDAD PARA MÓVILES --- */
+@media (max-width: 768px) {
+  .tarjeta-pelicula {
+    flex: 0 0 180px; /* Tarjetas más angostas en celular */
+  }
+  
+  .tarjeta-imagen-contenedor {
+    height: 270px;
+  }
+  
+  .tarjeta-titulo {
+    font-size: 1rem;
+  }
+  
+  .boton-favorito, .boton-detalles {
+    font-size: 0.75rem;
+    padding: 6px 0;
+  }
 }
